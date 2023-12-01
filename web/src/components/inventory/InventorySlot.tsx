@@ -137,18 +137,20 @@ const InventorySlot: React.FC<SlotProps> = ({ inventory, item }) => {
         {isSlotWithItem(item) && (
           <div className="item-slot-wrapper">
             <div className="item-slot-header-wrapper">
-              <div className="item-slot-info-wrapper">
-                {item.count > 0 && <p>{item.count ? item.count.toLocaleString('en-us') : ''}</p>}
-                {item.weight > 0 && (
-                <p>
-                  {item.weight > 0
-                    ? `${(item.weight / 100).toLocaleString('en-us', {
-                        minimumFractionDigits: 2,
-                      })}`
-                    : ''}
-                </p>
-                )}
-              </div>
+            <div className="item-slot-info-wrapper">
+              <p>
+                {item.weight > 0
+                  ? item.weight >= 1000
+                    ? `${(item.weight / 1000).toLocaleString('en-us', {
+                        minimumFractionDigits: 1,
+                      })}kg `
+                    : `${item.weight.toLocaleString('en-us', {
+                        minimumFractionDigits: 0,
+                      })}g `
+                  : ''}
+              </p>
+              <p>{item.count ? item.count.toLocaleString('en-us') + `x` : ''}</p>
+            </div>
             </div>
             <div>
               {inventory.type === 'shop' && item?.price !== undefined && (
