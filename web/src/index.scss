@@ -10,7 +10,7 @@ $gridCols: 5;
 $gridRows: 5;
 $gridCols-right: 4;
 $gridRows-right: 5;
-$gridSize: 10.2vh;
+$gridSize: 10.20vh;
 $gridGap: 0.5rem;
 
 $containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gridGap});
